@@ -17,20 +17,20 @@ class modelUsuarios:
         self.cursor.execute("SELECT * FROM usuarios")
         return self.cursor.fetchall()
      
-    def insertar_usuario(self, user_name, user_email, user_password):
-        val = (user_name, user_email, user_password)
+    def insertar_usuario(self, name, email, password):
+        val = (name, email, password)
         sql = "INSERT INTO usuarios (user_name, user_email, user_password) VALUES(%s, %s, %s)"
         self.cursor.execute(sql, val)
         self.conexion.commit()
 
-    def actualizar_usuario(self, user_id, user_name, user_email, user_password):
-            val= (user_name, user_email, user_email, user_password, user_id)
+    def actualizar_usuario(self, id, name, email, password):
+            val= (name, email, email, password, id)
             sql= "UPDATE usuarios SET user_name= %s, user_email= %s, user_password= %s WHERE user_id= %s"
             self.cursor.execute(sql, val)
             self.conexion.commit()
 
-    def eliminar_usuarios(self, user_id):
-            val = (user_id,)
+    def eliminar_usuarios(self, id):
+            val = (id,)
             sql = "DELETE FROM usuarios WHERE user_id = %s"
             self.cursor.execute(sql, val)
             self.conexion.commit()
